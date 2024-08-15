@@ -1,34 +1,22 @@
 import Todo from "./components/Todo"
 import Form from "./components/Form"
+import FilterButton from "./components/FilterButton.jsx";
 import PropTypes from 'prop-types'
 
 function App(props) {
     const taskList = props.tasks?.map((task) => (
         <Todo id={task.id} name={task.name} completed={task.completed} key={task.id} />
     ));
-
-
+    
     return (
         <div className="todoapp stack-large">
             <h1>TodoMatic</h1>
             <Form />
             <div className="filters btn-group stack-exception">
-                <button type="button" className="btn toggle-btn" aria-pressed="true">
-                    <span className="visually-hidden">Show </span>
-                    <span>all</span>
-                    <span className="visually-hidden"> tasks</span>
-                </button>
-                <button type="button" className="btn toggle-btn" aria-pressed="false">
-                    <span className="visually-hidden">Show </span>
-                    <span>Active</span>
-                    <span className="visually-hidden"> tasks</span>
-                </button>
-                <button type="button" className="btn toggle-btn" aria-pressed="false">
-                    <span className="visually-hidden">Show </span>
-                    <span>Completed</span>
-                    <span className="visually-hidden"> tasks</span>
-                </button>
-            </div>
+               <FilterButton type={"All"} pressed={"true"} />
+                <FilterButton type={"Active"} pressed={"false"} />
+                <FilterButton type={"Completed"} pressed={"false"} />
+            </div>`
             <h2 id="list-heading">3 tasks remaining</h2>
             <ul
                 role="list"
