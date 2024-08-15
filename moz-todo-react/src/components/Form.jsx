@@ -1,6 +1,13 @@
-function Form() {
+import PropTypes from "prop-types";
+
+function Form(props) {
+    function handleSubmit(event) {
+        event.preventDefault()
+        props.addTask(event.target.text.value);
+    }
+
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <h2 className="label-wrapper">
                 <label htmlFor="new-todo-input" className="label__lg">
                     What needs to be done?
@@ -18,6 +25,10 @@ function Form() {
             </button>
         </form>
     )
+}
+
+Form.propTypes = {
+    addTask: PropTypes.func.isRequired,
 }
 
 export default Form;

@@ -4,14 +4,18 @@ import FilterButton from "./components/FilterButton.jsx";
 import PropTypes from 'prop-types'
 
 function App(props) {
+    function addTask(name){
+        alert(name)
+    }
+
     const taskList = props.tasks?.map((task) => (
         <Todo id={task.id} name={task.name} completed={task.completed} key={task.id} />
     ));
-    
+
     return (
         <div className="todoapp stack-large">
             <h1>TodoMatic</h1>
-            <Form />
+            <Form addTask={addTask}/>
             <div className="filters btn-group stack-exception">
                <FilterButton type={"All"} pressed={"true"} />
                 <FilterButton type={"Active"} pressed={"false"} />
