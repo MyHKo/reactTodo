@@ -1,14 +1,6 @@
 import PropTypes from 'prop-types'
 import {useEffect, useState, useRef} from "react";
-
-function usePrevious(value) {
-    const ref = useRef();
-    useEffect(() => {
-        ref.current = value;
-    });
-    return ref.current;
-}
-
+import usePrevious from "../UsePrevious.jsx";
 
 function Todo(props) {
     const [isEditing, setEditing] = useState(false);

@@ -4,21 +4,13 @@ import FilterButton from "./components/FilterButton.jsx";
 import PropTypes from 'prop-types'
 import { useState, useRef, useEffect } from "react";
 import {nanoid} from "nanoid";
+import usePrevious from "./UsePrevious.jsx";
 
 const FILTER_MAP = {
     All: () => true,
     Active: (task) => !task.completed,
     Completed: (task) => task.completed,
 }
-
-function usePrevious(value) {
-    const ref = useRef();
-    useEffect(() => {
-        ref.current = value;
-    });
-    return ref.current;
-}
-
 
 const FILTER_NAMES = Object.keys(FILTER_MAP)
 
